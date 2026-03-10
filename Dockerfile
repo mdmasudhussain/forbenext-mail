@@ -2,12 +2,11 @@ FROM php:8.2-cli
 
 WORKDIR /app
 
-COPY snappymail.zip /app/
+COPY . /app
 
 RUN apt-get update && apt-get install -y unzip \
  && unzip snappymail.zip \
  && rm snappymail.zip \
- && mkdir -p data \
  && chmod -R 777 data
 
 EXPOSE 10000
