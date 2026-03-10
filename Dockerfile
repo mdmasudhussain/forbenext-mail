@@ -5,8 +5,10 @@ WORKDIR /app
 COPY snappymail.zip /app/
 
 RUN apt-get update && apt-get install -y unzip \
-    && unzip snappymail.zip \
-    && rm snappymail.zip
+ && unzip snappymail.zip \
+ && rm snappymail.zip \
+ && mkdir -p data \
+ && chmod -R 777 data
 
 EXPOSE 10000
 
