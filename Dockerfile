@@ -1,14 +1,15 @@
 FROM php:8.2-cli
 
 WORKDIR /app
+
 COPY . /app
 
 RUN apt-get update && apt-get install -y unzip \
  && unzip snappymail.zip \
  && rm snappymail.zip
 
-# recreate clean data folder every deploy
-RUN rm -rf /app/data && mkdir /app/data && chmod -R 777 /app/data
+# delete any existing data
+RUN rm -rf /app/data
 
 EXPOSE 10000
 
